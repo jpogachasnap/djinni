@@ -3,13 +3,12 @@
 
 #pragma once
 
-#include <memory>
-
 namespace textsort {
 
-class TextboxListener;
 enum class sort_order;
 struct ItemList;
+struct ListenerRecord;
+struct SortRecord;
 
 class SortItems {
 public:
@@ -18,7 +17,7 @@ public:
     /** For the iOS / Android demo */
     virtual void sort(sort_order order, const ItemList & items) = 0;
 
-    static /*not-null*/ std::shared_ptr<SortItems> create_with_listener(const /*not-null*/ std::shared_ptr<TextboxListener> & listener);
+    static SortRecord create_with_listener(const ListenerRecord & listener);
 
     /** For the localhost / command-line demo */
     static ItemList run_sort(const ItemList & items);

@@ -3,8 +3,9 @@
 
 #include "NativeSortItems.hpp"  // my header
 #include "NativeItemList.hpp"
+#include "NativeListenerRecord.hpp"
 #include "NativeSortOrder.hpp"
-#include "NativeTextboxListener.hpp"
+#include "NativeSortRecord.hpp"
 
 namespace djinni_generated {
 
@@ -26,11 +27,11 @@ void NativeSortItems::sort(const CppType& self, int32_t w_order,const em::val& w
 }
 em::val NativeSortItems::create_with_listener(const em::val& w_listener) {
     try {
-        auto r = ::textsort::SortItems::create_with_listener(::djinni_generated::NativeTextboxListener::toCpp(w_listener));
-        return ::djinni_generated::NativeSortItems::fromCpp(r);
+        auto r = ::textsort::SortItems::create_with_listener(::djinni_generated::NativeListenerRecord::toCpp(w_listener));
+        return ::djinni_generated::NativeSortRecord::fromCpp(r);
     }
     catch(const std::exception& e) {
-        return ::djinni::ExceptionHandlingTraits<::djinni_generated::NativeSortItems>::handleNativeException(e);
+        return ::djinni::ExceptionHandlingTraits<::djinni_generated::NativeSortRecord>::handleNativeException(e);
     }
 }
 em::val NativeSortItems::run_sort(const em::val& w_items) {

@@ -77,6 +77,7 @@ fi
     --ts-out "$temp_out/ts" \
     --ts-module "example" \
     \
+    --allow-interfaces-in-records true \
     --idl "$in"
 
 # Copy changes from "$temp_output" to final dir.

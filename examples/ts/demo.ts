@@ -5,7 +5,7 @@ declare function Module(): Promise<example.Example_statics>;
 var sorter: example.SortItems;
 
 Module().then(m => {
-    sorter = m.SortItems.createWithListener(new SortListener());
+    sorter = m.SortItems.createWithListener( { listener: new SortListener() } ).sorter;
 })
 
 class SortListener implements example.TextboxListener {

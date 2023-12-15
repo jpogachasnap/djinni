@@ -8,14 +8,25 @@ sort_order = enum {
     random;
 }
 
+listener_record = record {
+    listener : textbox_listener;
+}
+
+sort_record = record {
+    sorter : sort_items;
+}
+
+
 sort_items = interface +c {
     # For the iOS / Android demo
     sort(order: sort_order, items: item_list);
-    static create_with_listener(listener: textbox_listener): sort_items;
+    static create_with_listener(listener: listener_record): sort_record;
 
     # For the localhost / command-line demo
     static run_sort(items: item_list): item_list;
 }
+
+
 
 textbox_listener = interface +j +o +w {
     update(items: item_list);

@@ -12,12 +12,20 @@ export enum SortOrder {
     RANDOM = 2,
 }
 
+export interface /*record*/ ListenerRecord {
+    listener: TextboxListener;
+}
+
+export interface /*record*/ SortRecord {
+    sorter: SortItems;
+}
+
 export interface SortItems {
     /** For the iOS / Android demo */
     sort(order: SortOrder, items: ItemList): void;
 }
 export interface SortItems_statics {
-    createWithListener(listener: TextboxListener): SortItems;
+    createWithListener(listener: ListenerRecord): SortRecord;
     /** For the localhost / command-line demo */
     runSort(items: ItemList): ItemList;
 }

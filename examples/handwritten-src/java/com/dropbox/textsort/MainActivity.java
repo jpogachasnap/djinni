@@ -24,9 +24,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         text = (EditText) findViewById(R.id.editText);
-        textboxListener = new TextboxListenerImpl(text);
+        
+        ListenerRecord listenerRecord = new ListenerRecord(  new TextboxListenerImpl(text) );
         // Call JNI to initiate the SortItems object from the given textboxListener and translate to Java
-        sortItemsInterface = SortItems.createWithListener(textboxListener);
+        sortItemsInterface = SortItems.createWithListener(listenerRecord).getSorter();
     }
 
     public void sort(SortOrder order) {

@@ -3,8 +3,9 @@
 
 #include "NativeSortItems.hpp"  // my header
 #include "NativeItemList.hpp"
+#include "NativeListenerRecord.hpp"
 #include "NativeSortOrder.hpp"
-#include "NativeTextboxListener.hpp"
+#include "NativeSortRecord.hpp"
 
 namespace djinni_generated {
 
@@ -32,8 +33,8 @@ CJNIEXPORT void JNICALL Java_com_dropbox_textsort_SortItems_00024CppProxy_native
 CJNIEXPORT jobject JNICALL Java_com_dropbox_textsort_SortItems_createWithListener(JNIEnv* jniEnv, jobject /*this*/, jobject j_listener)
 {
     try {
-        auto r = ::textsort::SortItems::create_with_listener(::djinni_generated::NativeTextboxListener::toCpp(jniEnv, j_listener));
-        return ::djinni::release(::djinni_generated::NativeSortItems::fromCpp(jniEnv, r));
+        auto r = ::textsort::SortItems::create_with_listener(::djinni_generated::NativeListenerRecord::toCpp(jniEnv, j_listener));
+        return ::djinni::release(::djinni_generated::NativeSortRecord::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 

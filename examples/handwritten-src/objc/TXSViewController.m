@@ -4,6 +4,7 @@
 #import "TXSTextboxListenerImpl.h"
 #import "TXSViewController.h"
 #import "TXSTextboxListener.h"
+#import "TXSListenerRecord.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -49,8 +50,10 @@
         // Create the Objective-C TXSTextboxListener
         _textboxListener = [[TXSTextboxListenerImpl alloc] initWithUITextView:self.textView];
     }
-    
-    _sortItemInterface = [TXSSortItems createWithListener:_textboxListener];
+
+    TXSListenerRecord* record = [TXSListenerRecord listenerRecordWithListener:_textboxListener];
+
+    _sortItemInterface = [TXSSortItems createWithListener:record].sorter;
 }
 
 -(IBAction)toggleDebugMode:(id)sender

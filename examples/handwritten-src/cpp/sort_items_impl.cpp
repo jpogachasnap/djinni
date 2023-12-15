@@ -3,13 +3,15 @@
 
 #include "item_list.hpp"
 #include "sort_order.hpp"
-
+#include "sort_record.hpp"
+#include "listener_record.hpp"
 #include "sort_items_impl.hpp"
 
 namespace textsort {
 
-std::shared_ptr<SortItems> SortItems::create_with_listener(const std::shared_ptr<TextboxListener>& listener) {
-    return std::make_shared<SortItemsImpl>(listener);
+SortRecord SortItems::create_with_listener(const ListenerRecord & listener) {
+    SortRecord softRecord( std::make_shared<SortItemsImpl>(listener.listener) );
+    return softRecord;
 }
 
 SortItemsImpl::SortItemsImpl (const std::shared_ptr<TextboxListener> & listener) {
